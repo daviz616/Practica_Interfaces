@@ -1,8 +1,8 @@
 package Ventana;
 
-public class VetanaCarga {
+public class PanelCarga {
 
-	public VetanaCarga() {
+	public PanelCarga() {
 		// TODO Auto-generated constructor stub
 	}
 
