@@ -6,13 +6,16 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/Users/DAM/Downloads/jsoup-1.21.2.jar" sourcepath="C:/Users/DAM/Downloads/jsoup-1.21.2-sources.jar">
+	<classpathentry kind="lib" path="javax.mail.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/C:/Users/DAM/Downloads/jsoup-1.21.2-javadoc.jar!/"/>
+			<attribute name="javadoc_location" value="jar:platform:/resource/PracticaInterfaces/javax.mail-api-1.6.2-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/DAM/Downloads/Librerías Email y Código-20251127/activation-1.1.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/DAM/Downloads/Librerías Email y Código-20251127/javax.mail.jar"/>
-	<classpathentry kind="lib" path="C:/Users/DAM/Downloads/Librerías Email y Código-20251127/javax.mail-api-1.6.2-javadoc.jar"/>
+	<classpathentry kind="lib" path="jsoup-1.21.2.jar" sourcepath="jsoup-1.21.2-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/PracticaInterfaces/jsoup-1.21.2-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="activation-1.1.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
