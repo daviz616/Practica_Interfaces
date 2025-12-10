@@ -5,7 +5,12 @@ import javax.swing.JPanel;
 
 public class VentanaPrincipal extends JFrame {
 
-    public VentanaPrincipal() {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public VentanaPrincipal() {
         setTitle("PROYECTO DAM 25 - Noticias");
         setSize(1024, 768);
         setResizable(false);

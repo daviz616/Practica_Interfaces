@@ -2,76 +2,103 @@ package Ventana;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.Timer;
+import javax.swing.SwingConstants;
 
 import Gestores.GestorFicheros;
 
 public class VentanaCarga extends JFrame {
 
+    private static final long serialVersionUID = 1L;
     private JProgressBar barra;
     private Timer temporizador;
-    private int segundos = 0;
+    private int progreso = 0;
+    private Image imagenFondo;
+    
+     private JLabel lblTitulo; 
 
     public VentanaCarga() {
-        // Configuración básica (Tu Main pone el tamaño y el setVisible, así que aquí no hace falta)
         setTitle("Cargando...");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(800, 600);
         setLocationRelativeTo(null);
-        setLayout(null); // Diseño absoluto para colocar cosas a mano
 
-        // Panel de fondo (opcional, para darle color)
-        JPanel panel = new JPanel();
+        // Cargar imagen
+        try {
+            imagenFondo = ImageIO.read(new File("fondo.jpg"));
+        } catch (IOException e) {
+            System.out.println("Imagen no encontrada.");
+        }
+
+        JPanel panel = new JPanel() {
+            private static final long serialVersionUID = 1L;
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                if (imagenFondo != null) {
+                    g.drawImage(imagenFondo, 0, 0, getWidth(), getHeight(), this);
+                }
+            }
+        };
+        
         panel.setLayout(null);
         panel.setBackground(Color.DARK_GRAY);
-        panel.setBounds(0, 0, 800, 600); // Cubre toda la ventana
-        add(panel);
+        setContentPane(panel);
 
-        // Texto
-        JLabel lblTitulo = new JLabel("CARGANDO SISTEMA...");
+       
+        lblTitulo = new JLabel("CARGANDO SISTEMA...");
+        lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
         lblTitulo.setForeground(Color.WHITE);
         lblTitulo.setFont(new Font("Arial", Font.BOLD, 24));
-        lblTitulo.setBounds(250, 200, 300, 30);
+        lblTitulo.setBounds(200, 200, 400, 30);
         panel.add(lblTitulo);
 
-        // Barra de progreso
         barra = new JProgressBar(0, 100);
         barra.setBounds(100, 400, 600, 30);
         barra.setStringPainted(true);
+        barra.setForeground(new Color(50, 205, 50)); 
         panel.add(barra);
 
-        // Arrancamos el contador
-        iniciarTimer();
+        iniciarCargaFluida();
     }
 
-    private void iniciarTimer() {
-        temporizador = new Timer(1000, new ActionListener() {
+    private void iniciarCargaFluida() {
+        temporizador = new Timer(60, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                segundos++;
-                barra.setValue(segundos * 20); // 20, 40, 60...
+                progreso++; 
+                barra.setValue(progreso); 
 
-                // 1. Validar ficheros en el segundo 4
-                if (segundos == 4) {
+                if (progreso == 80) {
+                    
+                    lblTitulo.setText("Validando archivos..."); 
+                    
+                    // Pequeño truco: forzamos el repintado inmediato por si acaso
+                    lblTitulo.repaint(); 
+                    
                     if (!GestorFicheros.validarArchivosExistentes()) {
                         temporizador.stop();
-                        JOptionPane.showMessageDialog(null, "Error: Faltan archivos txt.");
+                        JOptionPane.showMessageDialog(null, 
+                            "Error Crítico: Faltan archivos de configuración.");
                         System.exit(0);
                     }
                 }
 
-                // 2. Terminar en el segundo 5
-                if (segundos == 5) {
+                if (progreso >= 100) {
                     temporizador.stop();
-                    dispose(); // Cierra esta ventana
-                    
-                    // Abre la ventana principal
+                    dispose();
                     new VentanaPrincipal(); 
                 }
             }
