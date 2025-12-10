@@ -2,7 +2,7 @@ package Principal;
 
 import java.awt.EventQueue;
 
-import Ventana.VentanaPrincipal;
+import Ventana.VentanaCarga;
 
 
 
@@ -13,7 +13,7 @@ public class Main {
 			public void run() {
 				try {
 				  
-					VentanaPrincipal miVentana= new VentanaPrincipal();		
+					VentanaCarga miVentana= new VentanaCarga();		
 					miVentana.setSize(800, 600);
 					miVentana.setVisible(true);				
 					
