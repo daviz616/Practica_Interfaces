@@ -17,11 +17,11 @@ public class GestorFicheros {
         File fUsuarios = new File(RUTA_USUARIOS);
         File fConfig = new File(RUTA_CONFIG);
 
-        // 2. La condición lógica: ¿Existen el de usuarios Y el de configuración?
+        
         if (fUsuarios.exists() && fConfig.exists()) {
-            return true; // Todo correcto, semáforo verde
+            return true; 
         } else {
-            return false; // Falta alguno, semáforo rojo
+            return false; 
         }
     }
   
@@ -40,9 +40,9 @@ public class GestorFicheros {
                     String nick = partes[0];
                     String pass = partes[1];
                     String email = partes[2];
-                    boolean isAdmin = Boolean.parseBoolean(partes[3]);
+                    boolean esAdmin = Boolean.parseBoolean(partes[3]);
 
-                    Usuario u = new Usuario(nick, pass, email, isAdmin);
+                    Usuario u = new Usuario(nick, pass, email, esAdmin);
                     lista.add(u);
                 }
             }

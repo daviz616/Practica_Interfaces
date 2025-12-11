@@ -17,7 +17,6 @@ public class VentanaPrincipal extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        // Aquí cargaremos el Login más adelante
         // setContentPane(new PanelLogin(this));
         
         setVisible(true);

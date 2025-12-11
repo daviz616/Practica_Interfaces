@@ -1,7 +1,0 @@
-HORA_ENVIO;07:00
-EMAIL_ORIGEN;proyectodam@gmail.com
-EMAIL_PASS;clave_de_aplicacion
-URL_ECONOMIA;https://elpais.com/economia/rss;https://elmundo.es/economia/rss;https://expansion.com/rss
-URL_DEPORTES;https://as.com/rss;https://marca.com/rss;https://sport.es/rss
-URL_NACIONAL;https://elpais.com/espana/rss;https://elmundo.es/espana/rss;https://abc.es/espana/rss
-URL_INTERNACIONAL;https://bbc.com/mundo/rss;https://cnn.com/rss;https://nytimes.com/rss

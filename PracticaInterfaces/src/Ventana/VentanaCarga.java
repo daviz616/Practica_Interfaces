@@ -1,4 +1,4 @@
-package Ventana;
+ package Ventana;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -19,6 +19,7 @@ import javax.swing.SwingConstants;
 
 import Gestores.GestorFicheros;
 
+
 public class VentanaCarga extends JFrame {
 
     private static final long serialVersionUID = 1L;
@@ -35,15 +36,16 @@ public class VentanaCarga extends JFrame {
         setSize(800, 600);
         setLocationRelativeTo(null);
 
-        // Cargar imagen
+        
         try {
-            imagenFondo = ImageIO.read(new File("fondo.jpg"));
+            imagenFondo = ImageIO.read(new File("carga.jpg"));
         } catch (IOException e) {
             System.out.println("Imagen no encontrada.");
         }
 
         JPanel panel = new JPanel() {
             private static final long serialVersionUID = 1L;
+            
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -85,7 +87,7 @@ public class VentanaCarga extends JFrame {
                     
                     lblTitulo.setText("Validando archivos..."); 
                     
-                    // Pequeño truco: forzamos el repintado inmediato por si acaso
+                    
                     lblTitulo.repaint(); 
                     
                     if (!GestorFicheros.validarArchivosExistentes()) {
